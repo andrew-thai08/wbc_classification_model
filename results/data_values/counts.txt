@@ -1,0 +1,94 @@
+Data Directory File Counts
+Generated: 2025-11-08 12:34:46
+==================================================
+
+tower1_cells: 14514 (
+    corrupt files removed (7.78%)
+
+    test split (27.62%)
+    train re-split:
+        train split (85.20%)
+        val split (14.80%)
+)
+    corrupt: 1129
+
+    test: 4009
+        basophil: 88
+        eosinophil: 298
+        lymphocyte: 955
+        monocyte: 218
+        neutrophil: 2450
+
+    train: 7988
+        basophil: 177
+        eosinophil: 590
+        lymphocyte: 1907
+        monocyte: 441
+        neutrophil: 4873
+
+    val: 1388
+        basophil: 31
+        eosinophil: 102
+        lymphocyte: 341
+        monocyte: 75
+        neutrophil: 839
+
+tower2_slides: 1966 (
+    no corrupt files (0.00%)
+
+    test split (20.00%)
+    train re-split:
+        train split (80.00%)
+        val split (20.00%)
+)
+    raw: 1966
+        acll: 510
+        acml: 478
+        healthy: 978
+
+    test: 394
+        healthy: 196
+        malignant: 198
+
+    train: 1256
+        healthy: 625
+        malignant: 631
+
+    val: 316
+        healthy: 157
+        malignant: 159
+
+==================================================
+TOTAL FILES: 18444
+
+
+
+tower2_slides: 1966 {
+    raw_slides: 1966
+    normalized_slides: 1966
+
+    slides_tiled: 549305
+        healthy_tile_size: 256
+        malignant_tile_size: 512
+
+    tiles_kept: 23530(4.33%)
+    tiles_discarded: 520061(95.67%)
+
+    test: 394
+        healthy: 126
+        malignant: 198
+        empty_healthy: 70
+        empty_malignant: 0
+
+    train: 1256
+        healthy: 413
+        malignant: 631
+        empty_healthy: 212
+        empty_malignant: 0
+
+    val: 316
+        healthy: 103
+        malignant: 159
+        empty_healthy: 54
+        empty_malignant: 0
+}

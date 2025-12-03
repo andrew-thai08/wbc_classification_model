@@ -1,0 +1,41 @@
+{
+  "test": {
+    "labels": {
+      "healthy": 126,
+      "malignant": 198
+    },
+    "empty": {
+      "healthy": 70,
+      "malignant": 0
+    },
+    "total": 394,
+    "total_non_empty": 324,
+    "total_empty": 70
+  },
+  "train": {
+    "labels": {
+      "healthy": 413,
+      "malignant": 631
+    },
+    "empty": {
+      "healthy": 212,
+      "malignant": 0
+    },
+    "total": 1256,
+    "total_non_empty": 1044,
+    "total_empty": 212
+  },
+  "val": {
+    "labels": {
+      "healthy": 103,
+      "malignant": 159
+    },
+    "empty": {
+      "healthy": 54,
+      "malignant": 0
+    },
+    "total": 316,
+    "total_non_empty": 262,
+    "total_empty": 54
+  }
+}

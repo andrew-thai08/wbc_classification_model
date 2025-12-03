@@ -1,5 +1,6 @@
-name: bmen
+name: wbc-classifier
 channels:
+  - pytorch
   - conda-forge
 dependencies:
   - python=3.11
@@ -7,9 +8,14 @@ dependencies:
   - pandas
   - scipy
   - matplotlib
-  - jupyter
+  - seaborn
   - scikit-learn
+  - pillow
+  - tqdm
+  - pyarrow          
+  - jupyter
+  - pytorch
+  - torchvision
   - pip
   - pip:
-      - django
-      - seaborn
+      - torchstain   

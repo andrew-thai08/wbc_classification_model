@@ -3,9 +3,13 @@ data/*
 !data/README.md
 
 # ---- MODEL OUTPUTS ----
-results/checkpoints/*
-results/logs/*
-results/figures/*
+results/**/models/
+results/**/features/ 
+results/**/kept_tiles_preview/
+results/**/tile_filter_preview/
+results/**/*.pt
+results/**/*.parquet
+results/**/dataframes/
 
 # ---- PYTHON CACHE ----
 __pycache__/

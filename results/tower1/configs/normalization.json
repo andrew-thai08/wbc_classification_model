@@ -1,0 +1,14 @@
+{
+  "img_size": 256,
+  "mean": [
+    0.7049359083175659,
+    0.5392919182777405,
+    0.588591456413269
+  ],
+  "std": [
+    0.16192129254341125,
+    0.18972310423851013,
+    0.09692736715078354
+  ],
+  "source": "/Users/andrewthai/dev/BMEN_Projects/wbc_classification_model/results/data_values/train_index.csv"
+}
