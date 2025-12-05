@@ -1,10 +1,9 @@
 """
-Utility script to rebuild Tower 2 malignant slides without Macenko normalization.
+Utility script to rebuild Tower 2 malignant slides.
 
 Steps:
 1. Delete all previously normalized/tiled malignant outputs.
 2. Reprocess raw malignant slides with simple autocontrast + tissue masking
-   (matching the healthy preprocessing minus Macenko).
 3. Tile the refreshed malignant slides into 256x256 patches.
 """
 
@@ -14,6 +13,7 @@ import shutil
 from pathlib import Path
 
 import numpy as np
+import random
 from PIL import Image, ImageOps
 from tqdm import tqdm
 
@@ -25,10 +25,16 @@ TILES_DIR = PROJECT_ROOT / "data/tower2_slides/tiles"
 LABEL = "malignant"
 SPLITS = ["train", "val", "test"]
 
-TILE_SIZE = 512
-TILE_STRIDE = 256
+TILE_SIZE = 256
+TILE_STRIDE = 128
 MIN_SLIDE_TISSUE_RATIO = 0.05
 MIN_TILE_TISSUE_RATIO = 0.05
+
+def set_seed(seed: int = 42) -> None:
+    random.seed(seed)
+    np.random.seed(seed)
+
+set_seed(42)
 
 
 def _preprocess_brightness(rgb: np.ndarray) -> np.ndarray:
@@ -126,7 +132,6 @@ def _process_split(split: str) -> None:
 
 
 def main():
-    print("Rebuilding malignant slides without Macenko normalization...")
     _clear_old_outputs()
     for split in SPLITS:
         _process_split(split)

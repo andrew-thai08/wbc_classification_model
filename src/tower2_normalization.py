@@ -1,6 +1,7 @@
 import argparse
 from pathlib import Path
 import numpy as np
+import random
 import torch
 import torchstain
 import json
@@ -14,6 +15,17 @@ RESULTS_DIR = Path('results') / 'tower2'
 SUMMARY_PATH = RESULTS_DIR / 'tiling_summary.json'
 
 DEVICE = torch.device("mps") if torch.backends.mps.is_available() else torch.device("cpu")
+
+def set_seed(seed: int = 42) -> None:
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+
+set_seed(42)
 
 def load_raw():
     """
