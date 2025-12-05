@@ -6,6 +6,7 @@ import torchvision.models as models
 import torchvision.transforms as T
 from PIL import Image
 from pathlib import Path
+import random
 import numpy as np
 import pandas as pd
 from sklearn.metrics import accuracy_score, balanced_accuracy_score, f1_score, classification_report, confusion_matrix
@@ -35,6 +36,17 @@ PATIENCE = 5
 CLASS_NAMES = ["basophil", "eosinophil", "lymphocyte", "monocyte", "neutrophil"]
 CLASS_NAMES_INDEX = {name: i for i, name in enumerate(CLASS_NAMES)}
 DEVICE = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+
+def set_seed(seed: int = 42) -> None:
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+
+set_seed(42)
 
 
 def build_index(split_root: Path) -> pd.DataFrame:

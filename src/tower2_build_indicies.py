@@ -1,6 +1,14 @@
 # tower2_build_indices.py
 from pathlib import Path
+import numpy as np
 import pandas as pd
+import random
+
+def set_seed(seed: int = 42) -> None:
+    random.seed(seed)
+    np.random.seed(seed)
+
+set_seed(42)
 
 PROJECT_ROOT = Path("/Users/andrewthai/dev/BMEN_Projects/wbc_classification_model")
 TILES_ROOT = PROJECT_ROOT / "data/tower2_slides/tiles"

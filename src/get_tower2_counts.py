@@ -12,6 +12,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import numpy as np
+import random
 from collections import defaultdict
 from pathlib import Path
 from typing import Dict, Tuple
@@ -20,6 +22,12 @@ from typing import Dict, Tuple
 PROJECT_ROOT = Path("/Users/andrewthai/dev/BMEN_Projects/wbc_classification_model")
 DEFAULT_TILES_ROOT = PROJECT_ROOT / "data/tower2_slides/tiles"
 DEFAULT_OUTPUT = PROJECT_ROOT / "results/tower2/metrics/tile_counts.json"
+
+def set_seed(seed: int = 42) -> None:
+    random.seed(seed)
+    np.random.seed(seed)
+
+set_seed(42)
 
 
 def dir_has_files(directory: Path) -> bool:

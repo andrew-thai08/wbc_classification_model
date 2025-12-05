@@ -19,6 +19,7 @@ from typing import Dict, List, Tuple
 
 import matplotlib.pyplot as plt
 import numpy as np
+import random
 import torch
 import torch.nn as nn
 import torchvision.models as models
@@ -46,6 +47,17 @@ MAX_SCATTER_SAMPLES = 5000  # limit samples to keep PCA plot manageable
 
 DEVICE = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
 print(f"Using device: {DEVICE}")
+
+def set_seed(seed: int = 42) -> None:
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+
+set_seed(42)
 
 class Tower1EmbeddingDataset(Dataset):
     """Loads labeled WBC crops from DATA_ROOT/<class_name>/*.png."""

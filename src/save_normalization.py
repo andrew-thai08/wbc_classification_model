@@ -11,7 +11,9 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
+import random
 import torch
 from PIL import Image
 from torch.utils.data import DataLoader, Dataset
@@ -24,6 +26,17 @@ CONFIG_DIR = PROJECT_ROOT / "results" / "configs"
 IMG_SIZE = 256
 BATCH_SIZE = 32
 NUM_WORKERS = 0
+
+def set_seed(seed: int = 42) -> None:
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+
+set_seed(42)
 
 
 class ImagePathDataset(Dataset):

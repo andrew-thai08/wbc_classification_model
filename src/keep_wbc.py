@@ -9,6 +9,8 @@ import argparse
 from pathlib import Path
 from typing import List, Tuple
 
+import numpy as np
+import random
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader, Dataset
@@ -30,6 +32,17 @@ NUM_WORKERS = 8
 EPOCHS = 20
 LR = 1e-3
 PREVIEW_LIMIT = 100
+
+def set_seed(seed: int = 42) -> None:
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+
+set_seed(42)
 
 
 class TileDataset(Dataset):
@@ -210,4 +223,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
