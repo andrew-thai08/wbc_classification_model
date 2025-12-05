@@ -390,3 +390,4 @@ if __name__ == "__main__":
         print(f"Predicted: {label} with confidence {confidence:.4f}")
     else:
         parser.print_help()
+#Reviewed Tower 1 CNN-Katie
